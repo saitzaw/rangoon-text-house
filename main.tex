@@ -1,69 +1,34 @@
-\documentclass{article}
+\documentclass[12pt]{article}
+\usepackage{fontspec}         % REQUIRED for Unicode fonts
+\usepackage{polyglossia}      % Better for multilingual
+\setmainlanguage{english}
+\setotherlanguage{burmese}
 
-\usepackage{amsmath} % for math
-\usepackage{graphicx} % for images
-\usepackage{booktabs} % for nicer tables
-\usepackage{xparse}
-\usepackage{tikz}
-\usetikzlibrary{calc}
+% Use a Windows-safe Myanmar font (like "Myanmar Text")
+\newfontfamily\burmesefont{Myanmar Text}  % Or Noto Sans Myanmar if available
 
-\tikzset{Arrow Style/.style={text=black, font=\boldmath}}
+\usepackage{geometry}
+\usepackage{tabularx}
+\geometry{margin=1in}
 
-\newcommand{\tikzmark}[1]{%
-	\tikz[overlay, remember picture, baseline] \node (#1) {};%
-}
-
-\newcommand*{\XShift}{0.5em}
-\newcommand*{\YShift}{0.5ex}
-
-\NewDocumentCommand{\DrawArrow}{s O{} m m m}{%
-	\begin{tikzpicture}[overlay,remember picture]
-		\draw[->, thick, Arrow Style, #2] 
-		($(#3.west)+(\XShift,\YShift)$) -- 
-		($(#4.east)+(-\XShift,\YShift)$)
-		node [midway,above] {#5};
-	\end{tikzpicture}%
-}
-
-\title{Gentle introduction to integration}
-\author{Jai Thiha Zaw}
+\title{Business English Vocabulary Guide}
+\author{Sai Thiha Zaw}
 \date{\today}
 
 \begin{document}
 	
 	\maketitle
+	\tableofcontents
+	\newpage
 	
-	\input{section\ch1\introduction}
-	\input{section\ch2\breif}
-
+	\section*{Introduction}
+	This guide contains useful Business English vocabulary grouped by office context.
 	
-	i. $\int{x^2 \sin(x)}dx$ 
-	\input{chapter1_int_eq1}
-	\input{chapter1_table1}
-
-	
-	
-	ii. $\int{cos(\sqrt(x))}dx$ 
-		\begin{align}  
-		\int {cos(\sqrt{x)}} dx 
-		&= 2 \int{\sqrt{x} \ cos(\sqrt{x})} \ d\sqrt{x} \\
-		&= 2 \sqrt{x} \ sin(\sqrt{x}) + 2 cos(\sqrt{x}) + C 
-	\end{align}
-	
-	\[
-	\renewcommand{\arraystretch}{1.5}
-	\begin{array}{c @{\hspace*{1.0cm}} c}\toprule
-		D & I \\\cmidrule{1-2}
-		2 \sqrt{x} \tikzmark{Left 1} & \tikzmark{Right 1}cos(\sqrt{x}) \\
-		2 \tikzmark{Left 2} & \tikzmark{Right 2} sin(\sqrt{x}) \\      
-		0 \tikzmark{Left 3} & \tikzmark{Right 3}-cos(x)\\      
-\\\bottomrule
-	\end{array}
-	\]
-	%-----------------------------------------
-	\DrawArrow[draw=red]{Left 1}{Right 2}{$+$}%
-	\DrawArrow[draw=brown]{Left 2}{Right 3}{$-$}%
-
-	
+	\newpage
+	\input{chapters/meeting}
+	%\newpage
+	%\input{chapters/email}
+	%\newpage
+	%\input{chapters/project}
 	
 \end{document}
